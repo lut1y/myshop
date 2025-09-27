@@ -7,8 +7,6 @@ from shop.models import Product, Category
 
 def product_list(request, category_slug=None):
 
-    debug_static_paths(request)
-
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
@@ -20,13 +18,6 @@ def product_list(request, category_slug=None):
                   {'products': products,
                    'category': category,
                    'categories': categories})
-
-from django.conf import settings
-
-def debug_static_paths(request):
-    print("STATIC_URL:", settings.STATIC_URL)
-    print("STATIC_ROOT:", settings.STATIC_ROOT)
-    return HttpResponse("Проверка завершена")
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id)
