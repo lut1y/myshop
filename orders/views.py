@@ -35,7 +35,7 @@ def order_create(request):
                 #               'orders/order/created.html',
                 #               {'order': order})
 
-            # задать заказ в сеансе
+                # задать заказ в сеансе
             request.session['order_id'] = order.id
             # перенаправить к платежу
             return redirect(reverse('payment:process'))
